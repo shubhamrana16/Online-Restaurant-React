@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from '../layout/Footer'
 import Header from '../layout/Header'
 
-function Registration() {
+function Registration(props) {
+
+
+    const{user, registerHandler} = props;
+        console.log("User",user);
+        console.log("dispatch",registerHandler);
+
+    const [registration, setregistration] = useState({})
+
     return (
         <div>
             <Header />
@@ -15,43 +23,46 @@ function Registration() {
                                 <span className="text-muted"> Already have an Account ? </span>
                                 <span className="text-danger font-weight-bold"> Log in</span>
                             </p>
-                            <div className="login-social-media py-3">
-                                <button className="btn btn-primary btn-block btn-sm">
-                                    Continue with Google
-                                </button>
-                            </div>
-                        </div>
-                        <form
 
+                        </div>
+                        <form 
+                        onSubmit = {()=>{
+                            registerHandler({registration})
+                            
+                        }}
                         >
                             <div className="form-group">
                                 <div className="form-row">
                                     <div className="col">
-                                        <label htmlFor="InputEmail">First Name</label>
-                                        <input
+                                        <label htmlFor="InputName"> Name</label>
+                                        <input   id="name"
                                             type="text"
                                             className="form-control form-control-sm"
-                                            placeholder="First Name"
+                                            placeholder="Name"
+                                            
+                                            onChange={e => {
+                                                const name = e.target.value;
+                                                setregistration({...registration,...{name}})
+                                            }  }
+
 
                                         />
                                     </div>
-                                    <div className="col">
-                                        <label htmlFor="InputEmail">Last Name</label>
-                                        <input
-                                            type="text"
-                                            className="form-control form-control-sm"
-                                            placeholder="Last Name"
 
-                                        />
-                                    </div>
 
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="InputEmail">Email address</label>
-                                <input
+                                <input  id ="email"
                                     type="email"
                                     className="form-control form-control-sm"
+                                     
+                                    onChange={e =>{ 
+                                        const userName = e.target.value;
+                                        setregistration({...registration,...{userName}})
+
+                                    }}
 
                                 />
                                 <small id="emailHelp" className="form-text text-muted">
@@ -60,27 +71,37 @@ function Registration() {
                             </div>
 
                             <div className="form-group">
-                            <label htmlFor="InputEmail">Phone</label>
-                            <input
-                                type="number"
-                                className="form-control form-control-sm"
+                                <label htmlFor="InputEmail">Phone</label>
+                                <input  id = "phone"
+                                    type="number"
+                                    className="form-control form-control-sm"
+                                   
+                                    onChange={e =>  {
+                                        const phone = e.target.value;
+                                        setregistration({...registration,...{ phone}})
+                                    }}
 
-                            />
-                            
-                        </div>
+                                />
+
+                            </div>
 
                             <div className="form-group">
                                 <label htmlFor="InputPassword1">Password</label>
-                                <input
+                                <input    id = "password"
                                     type="password"
                                     className="form-control form-control-sm"
+                                    
+                                    onChange={e =>  {
+                                        const password = e.target.value;
+                                        setregistration({...registration,...{password}})
+                                    }}
 
                                 />
                                 <small id="emailHelp" className="form-text text-muted">
                                     Please do not share your password with anyone else.
                                 </small>
                             </div>
-                            <button type="submit" className="btn btn-danger btn-sm">
+                            <button type="submit" className="btn btn-success btn-sm">
                                 Submit
                             </button>
                         </form>

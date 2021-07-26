@@ -1,8 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Footer from '../layout/Footer'
 import Header from '../layout/Header'
 
 function Login() {
+
+        const [userName, setuserName] = useState(" ");
+        const [password, setpassword] = useState("");
+        
+
+
     return (
         <div>
             <Header />
@@ -12,23 +18,21 @@ function Login() {
                         <div className="sign-in-header">
                             <h4 className="font-weight-bold">Login</h4>
                             <p className="sign-in-intro">
-                                <span className="text-muted">New to Food Delivery App ? </span>
+                                <span className="text-muted">New to LUNCH BOX please  ? </span>
                                 <span className="text-danger font-weight-bold">Sign Up</span>
                             </p>
-                            <div className="login-social-media py-3">
-                                <button className="btn btn-primary btn-block btn-sm">
-                                    Continue with Google
-                                </button>
-                            </div>
+                             
                         </div>
-                        <form
-                            
-                        >
+                        <form noValidate>
                             <div className="form-group">
-                                <label for="InputEmail">Email address</label>
-                                <input
+                                <label htmlFor="InputEmail">Email address</label>
+                                <input noValidate id = "userName"
                                     type="email"
                                     className="form-control form-control-sm"
+                                    placeholder ="Email"
+                                    value = {userName}
+                                    onChange = {e=>setuserName(e.target.value)}
+                                     
                                     
                                 />
                                 <small id="emailHelp" className="form-text text-muted">
@@ -36,14 +40,17 @@ function Login() {
                                 </small>
                             </div>
                             <div className="form-group">
-                                <label for="InputPassword1">Password</label>
-                                <input
+                                <label htmlFor="InputPassword1">Password</label>
+                                <input noValidate id = "password"
                                     type="password"
                                     className="form-control form-control-sm"
+                                    placeholder ="Password"
+                                    value = {password}
+                                    onChange = {e=>setpassword(e.target.value)}
                                    
                                 />
                             </div>
-                            <button type="submit" className="btn btn-danger btn-sm">
+                            <button type="submit" className="btn btn-success btn-sm">
                                 Submit
                             </button>
                         </form>

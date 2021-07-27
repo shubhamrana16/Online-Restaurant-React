@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
+import { connect } from 'react-redux'
 import Footer from '../layout/Footer'
 import Header from '../layout/Header'
+import {loginAction} from  '../../services/actions/LoginAction'
+ 
+function Login(props) {
 
-function Login() {
-
-        const [userName, setuserName] = useState(" ");
-        const [password, setpassword] = useState("");
+        const [loginInfo, setloginInfo] = useState({})
         
-
+      
 
     return (
         <div>
@@ -23,15 +24,20 @@ function Login() {
                             </p>
                              
                         </div>
-                        <form noValidate>
+                        <form  onSubmit = {(e)=>{
+                            e.preventDefault();
+                            props.loginHandle(loginInfo);
+                        }}>
                             <div className="form-group">
                                 <label htmlFor="InputEmail">Email address</label>
                                 <input noValidate id = "userName"
                                     type="email"
                                     className="form-control form-control-sm"
                                     placeholder ="Email"
-                                    value = {userName}
-                                    onChange = {e=>setuserName(e.target.value)}
+                                    onChange={e => {
+                                        const userName = e.target.value;
+                                        setloginInfo({...loginInfo,...{userName}})
+                                    }  }
                                      
                                     
                                 />
@@ -45,8 +51,10 @@ function Login() {
                                     type="password"
                                     className="form-control form-control-sm"
                                     placeholder ="Password"
-                                    value = {password}
-                                    onChange = {e=>setpassword(e.target.value)}
+                                    onChange={e => {
+                                        const userPassword = e.target.value;
+                                        setloginInfo({...loginInfo,...{userPassword}})
+                                    }  }
                                    
                                 />
                             </div>
@@ -64,4 +72,19 @@ function Login() {
     )
 }
 
-export default Login
+const mapStateToProps = (state) => {
+    return {
+      login: state,
+    };
+  };
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      loginHandle: (loginInfo) => {
+       dispatch(loginAction(loginInfo))
+       console.log(loginInfo);
+      },
+    };
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Login);

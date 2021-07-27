@@ -1,15 +1,41 @@
 import React, { useState } from 'react'
 import Footer from '../layout/Footer'
 import Header from '../layout/Header'
+import {Redirect} from 'react-router-dom'
+function Registration() {
 
-function Registration(props) {
+    const [userInfo, setuserInfo] = useState({});
+    const [redirect, setredirect] = useState(false)
+
+    
+   function registerHandle(e){
+
+    console.log(userInfo);
+    console.log( JSON.stringify(userInfo));
+    // e.preventDefault();
+      fetch("http://localhost:8080/registeruser", {
+          method: 'POST',
+          headers: {
+              "Content-Type":"application/json",
+              "Accept":"application/json"
+          },
+          body:JSON.stringify(userInfo)
+      }).then((result)=>{
+          result.json().then((resp)=>{
+            console.log("respsonse",resp);
+            setredirect (true);
+          })
+          
+      })
+      alert("Registration Suceessful");
+  }
 
 
-    const{user, registerHandler} = props;
-        console.log("User",user);
-        console.log("dispatch",registerHandler);
+    if(redirect){
+        return <Redirect to="/login" />;
+    }
 
-    const [registration, setregistration] = useState({})
+
 
     return (
         <div>
@@ -26,10 +52,7 @@ function Registration(props) {
 
                         </div>
                         <form 
-                        onSubmit = {()=>{
-                            registerHandler({registration})
-                            
-                        }}
+                        onSubmit = {registerHandle}
                         >
                             <div className="form-group">
                                 <div className="form-row">
@@ -42,7 +65,7 @@ function Registration(props) {
                                             
                                             onChange={e => {
                                                 const name = e.target.value;
-                                                setregistration({...registration,...{name}})
+                                                setuserInfo({...userInfo,...{name}})
                                             }  }
 
 
@@ -60,7 +83,7 @@ function Registration(props) {
                                      
                                     onChange={e =>{ 
                                         const userName = e.target.value;
-                                        setregistration({...registration,...{userName}})
+                                        setuserInfo({...userInfo,...{userName}})
 
                                     }}
 
@@ -77,8 +100,8 @@ function Registration(props) {
                                     className="form-control form-control-sm"
                                    
                                     onChange={e =>  {
-                                        const phone = e.target.value;
-                                        setregistration({...registration,...{ phone}})
+                                        const phoneNumber = e.target.value;
+                                        setuserInfo({...userInfo,...{ phoneNumber}})
                                     }}
 
                                 />
@@ -93,7 +116,7 @@ function Registration(props) {
                                     
                                     onChange={e =>  {
                                         const password = e.target.value;
-                                        setregistration({...registration,...{password}})
+                                        setuserInfo({...userInfo,...{password}})
                                     }}
 
                                 />
@@ -104,6 +127,8 @@ function Registration(props) {
                             <button type="submit" className="btn btn-success btn-sm">
                                 Submit
                             </button>
+                                     
+
                         </form>
                     </div>
                 </div>

@@ -1,5 +1,7 @@
-export const actionType = {
-    Registration_Request   : "Registration_Request",
-    Registration_Successful :"Registration_Successful",
+export const Type = {
    
+    login_Successful :"login_Successfull",
+    login_fail     : "login_fail"
 }
+
+export default Type;

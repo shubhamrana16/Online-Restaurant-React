@@ -6,13 +6,18 @@ function Registration() {
 
     const [userInfo, setuserInfo] = useState({});
     const [redirect, setredirect] = useState(false)
+    const [confirmPassword, setconfirmPassword] = useState();
+    const [IsError, setIsError] = useState("");
 
+
+
+  
     
    function registerHandle(e){
 
     console.log(userInfo);
     console.log( JSON.stringify(userInfo));
-    // e.preventDefault();
+     e.preventDefault();
       fetch("http://localhost:8080/registeruser", {
           method: 'POST',
           headers: {
@@ -32,9 +37,26 @@ function Registration() {
 
 
     if(redirect){
-        return <Redirect to="/login" />;
+        return ( <div>   <Redirect to="/login" />   </div>  );
     }
 
+
+    //password validation
+    var prevPass = userInfo.password;
+     
+   function passValide(x="" ){
+       
+       console.log("confirm",confirmPassword);
+        if( prevPass !== x ){
+            setIsError("please");
+          
+       }
+       else{
+         setIsError("");
+        
+       }
+   }
+    
 
 
     return (
@@ -49,11 +71,14 @@ function Registration() {
                                 <span className="text-muted"> Already have an Account ? </span>
                                 <span className="text-danger font-weight-bold"> Log in</span>
                             </p>
-
+                               
                         </div>
+
                         <form 
                         onSubmit = {registerHandle}
+
                         >
+
                             <div className="form-group">
                                 <div className="form-row">
                                     <div className="col">
@@ -80,6 +105,7 @@ function Registration() {
                                 <input  id ="email"
                                     type="email"
                                     className="form-control form-control-sm"
+                                    placeholder="Email"
                                      
                                     onChange={e =>{ 
                                         const userName = e.target.value;
@@ -98,6 +124,7 @@ function Registration() {
                                 <input  id = "phone"
                                     type="number"
                                     className="form-control form-control-sm"
+                                    placeholder="Phone Number"
                                    
                                     onChange={e =>  {
                                         const phoneNumber = e.target.value;
@@ -108,11 +135,13 @@ function Registration() {
 
                             </div>
 
+                            
                             <div className="form-group">
                                 <label htmlFor="InputPassword1">Password</label>
                                 <input    id = "password"
                                     type="password"
                                     className="form-control form-control-sm"
+                                    placeholder="Password"
                                     
                                     onChange={e =>  {
                                         const password = e.target.value;
@@ -120,7 +149,25 @@ function Registration() {
                                     }}
 
                                 />
+                                
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="InputPassword2">Confirm Password</label>
+                                <input    id = "password"
+                                    type="password"
+                                    className="form-control form-control-sm"
+                                    placeholder="Confirm Password"
+                                    value = {confirmPassword}
+                                    onChange={ e=>{
+                                        setconfirmPassword(e.target.value)
+                                         passValide(confirmPassword)
+                                      }}
+
+                                />
                                 <small id="emailHelp" className="form-text text-muted">
+                                <div  >{IsError}</div>
+
                                     Please do not share your password with anyone else.
                                 </small>
                             </div>

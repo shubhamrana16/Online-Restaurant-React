@@ -3,11 +3,12 @@ import { connect } from 'react-redux'
 import Footer from '../layout/Footer'
 import Header from '../layout/Header'
 import {loginAction} from  '../../services/actions/LoginAction'
- 
+import { useHistory } from 'react-router'
+
 function Login(props) {
 
         const [loginInfo, setloginInfo] = useState({})
-        
+        const history = useHistory();
       
 
     return (
@@ -26,7 +27,7 @@ function Login(props) {
                         </div>
                         <form  onSubmit = {(e)=>{
                             e.preventDefault();
-                            props.loginHandle(loginInfo);
+                            props.loginHandle(loginInfo,history);
                         }}>
                             <div className="form-group">
                                 <label htmlFor="InputEmail">Email address</label>
@@ -80,8 +81,8 @@ const mapStateToProps = (state) => {
   
   const mapDispatchToProps = (dispatch) => {
     return {
-      loginHandle: (loginInfo) => {
-       dispatch(loginAction(loginInfo))
+      loginHandle: (loginInfo,history) => {
+       dispatch(loginAction(loginInfo,history))
        console.log(loginInfo);
       },
     };

@@ -3,7 +3,7 @@ import  Type from '../Constants';
  
 
 
- export const loginAction = ( loginInfo)=>{
+ export const loginAction = ( loginInfo,history)=>{
      console.log(loginInfo);
       return async (dispatch)=>{
           try{
@@ -13,6 +13,7 @@ import  Type from '../Constants';
                     type:Type.login_Successful, 
                     payload:result
                 });
+                history.push("/")
 
                 
 
@@ -26,6 +27,9 @@ import  Type from '../Constants';
 
           }
       }
+
+
+      
 
     } 
     

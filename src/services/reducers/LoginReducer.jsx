@@ -3,7 +3,7 @@
 
 
 const initialLoginState ={ 
-        isLoggIn: false,
+    isLogin: false,
 
     user: {
         user_id:  0,
@@ -21,8 +21,10 @@ const initialLoginState ={
      switch (action.type) {
          case  Type.login_Successful:
              return{
-                isLoggIn: true,
+                isLogin: true,
                 state:action.payload
+
+              
              };
              
         case Type.login_fail:
@@ -33,6 +35,8 @@ const initialLoginState ={
          default:
             return state;
      }
+
+     
 
      
      }

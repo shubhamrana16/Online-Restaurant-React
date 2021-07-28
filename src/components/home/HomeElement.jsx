@@ -44,7 +44,7 @@ export const HomeItems = styled.div`
   width: 650px;
   color: #fff;
   text-transform: uppercase;
-  line-height: 1;
+   
   font-weight: bold;
   @media screen and (max-width: 650px) {
     width: 100%;

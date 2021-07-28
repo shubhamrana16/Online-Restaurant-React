@@ -13,7 +13,7 @@ import  Type from '../Constants';
                     type:Type.login_Successful, 
                     payload:result
                 });
-                history.push("/")
+                history.push("/welcome")
 
                 
 

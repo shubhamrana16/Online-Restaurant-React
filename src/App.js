@@ -3,15 +3,11 @@ import './App.css';
 import Body from './components/home/Body';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Login from './components/authentication/Login';
-import Registration from './components/authentication/Registration';
- 
-function App() {
+ import Registration from './components/authentication/Registration'
+ function App() {
   return (
     <div className="App">
       <Router>
-
-      
-
         <Switch>
 
           <Route exact path="/" >
@@ -21,12 +17,14 @@ function App() {
 
 
 
-          <Route exact path="/login" >
-            <Login />
-          </Route>
 
           <Route exact path="/register" >
             <Registration />
+          </Route>
+
+          
+          <Route exact path="/login" >
+            <Login />
           </Route>
 
         </Switch>

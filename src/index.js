@@ -12,7 +12,7 @@ import thunk from 'redux-thunk';
 const composeEnhance = window._REDUX_DEVTOOTLS_EXTENSION_COMPOSE_ || compose;
 const store = createStore(RootReducer,composeEnhance(applyMiddleware(thunk),composeWithDevTools()));
 
-
+console.log("store", store);
 ReactDOM.render(
   <React.StrictMode>
 

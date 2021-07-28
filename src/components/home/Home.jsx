@@ -11,7 +11,7 @@ export const Home = () => {
 
 
 
-    
+    const [redirect, setredirect] = useState(false);
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -31,12 +31,15 @@ export const Home = () => {
                 <HomeItems>
                     <HomeH1> DELICIOUS FOOD Ever</HomeH1>
                     <HomeP>Ready in  2 minuts</HomeP>               
-
+                    <HomeBtn onClick = {e=>(setredirect(true))}>ORDER NOW</HomeBtn>
                 </HomeItems>
             </HomeContent>
-
+              
         </HomeContainer>
     )
+
+
+    
 }
 
 export default Home

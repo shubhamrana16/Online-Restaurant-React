@@ -1,9 +1,14 @@
 import React from 'react'
  import {NavLink} from 'react-router-dom'
-
+import { connect } from 'react-redux'
+import Demo from '../authentication/Demo';
  
 
-function Header() {
+function Header(props) {
+
+  const{ login } = props
+
+  console.log("ye header he",login.isLogin );
   return (
 
     <div className="header d-flex justify-content-center py-2 shadow">
@@ -15,20 +20,50 @@ function Header() {
       
       <div className="ml-auto d-flex">
 
-        <NavLink to="/login" >
+    
+
+
+        {!login.isLogin  ?( <React.Fragment>
+          <NavLink to="/login" >
           <button className="btn btn-success btn-sm mx-2">Login</button>
         </NavLink>
-
         <NavLink to="/Register">
           <button className="btn btn-success btn-sm mr-5">Sign up</button>
         </NavLink>
-        
-        <button
-          className="btn btn-danger btn-sm mx-2">Log Out </button>
+
+          </React.Fragment>) : (<React.Fragment> 
+            <button
+            className="btn btn-danger btn-sm mx-2">Log Out </button> 
+           
+
+          </React.Fragment>) 
+          
+        }
+
+       
+
+       
 
       </div>
     </div>
   )
 }
 
-export default Header
+
+const mapStateToProps = (state) => {
+  return {
+      login: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logoutHandle: (loginInfo) => {
+      
+     console.log(loginInfo);
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+ 

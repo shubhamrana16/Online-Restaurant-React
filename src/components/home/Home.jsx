@@ -3,7 +3,8 @@ import { HomeContainer } from './HomeElement';
 import Navbar from '../navbar/Navbar';
 import { HomeContent, HomeItems, HomeH1, HomeP, HomeBtn } from './HomeElement';
 import Sidebar from '../sidebar/Sidebar';
- 
+import {Redirect} from 'react-router-dom'
+
  
 
 
@@ -20,8 +21,17 @@ export const Home = () => {
     };
 
 
+    if(redirect){
+        return ( <div>   <Redirect to="/login" />   </div>  );
+    }
+
 
     return (
+
+            
+
+
+
         <HomeContainer >
 
 

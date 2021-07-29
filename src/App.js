@@ -1,9 +1,11 @@
 
 import './App.css';
 import Body from './components/home/Body';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, NavLink } from 'react-router-dom'
 import Login from './components/authentication/Login';
  import Registration from './components/authentication/Registration'
+  import Welcome from './components/welcome/Welcome'
+
  function App() {
   return (
     <div className="App">
@@ -25,8 +27,17 @@ import Login from './components/authentication/Login';
           
           <Route exact path="/login" >
             <Login />
+
           </Route>
 
+       
+
+          <Route exact path="/welcome"  >
+             <Welcome />
+        </Route>
+
+        
+         
         </Switch>
       </Router>
 

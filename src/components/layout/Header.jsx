@@ -1,14 +1,13 @@
 import React from 'react'
  import {NavLink} from 'react-router-dom'
 import { connect } from 'react-redux'
-import Demo from '../authentication/Demo';
- 
+  
 
 function Header(props) {
 
-  const{ login } = props
+   
 
-  console.log("ye header he",login.isLogin );
+   
   return (
 
     <div className="header d-flex justify-content-center py-2 shadow">
@@ -19,30 +18,13 @@ function Header(props) {
 
       
       <div className="ml-auto d-flex">
-
-    
-
-
-        {!login.isLogin  ?( <React.Fragment>
           <NavLink to="/login" >
           <button className="btn btn-success btn-sm mx-2">Login</button>
         </NavLink>
+
         <NavLink to="/Register">
           <button className="btn btn-success btn-sm mr-5">Sign up</button>
         </NavLink>
-
-          </React.Fragment>) : (<React.Fragment> 
-            <button
-            className="btn btn-danger btn-sm mx-2">Log Out </button> 
-           
-
-          </React.Fragment>) 
-          
-        }
-
-       
-
-       
 
       </div>
     </div>

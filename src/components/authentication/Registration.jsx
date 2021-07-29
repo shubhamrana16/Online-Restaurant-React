@@ -152,25 +152,7 @@ function Registration() {
                                 
                             </div>
 
-                            <div className="form-group">
-                                <label htmlFor="InputPassword2">Confirm Password</label>
-                                <input    id = "password"
-                                    type="password"
-                                    className="form-control form-control-sm"
-                                    placeholder="Confirm Password"
-                                    value = {confirmPassword}
-                                    onChange={ e=>{
-                                        setconfirmPassword(e.target.value)
-                                         passValide(confirmPassword)
-                                      }}
-
-                                />
-                                <small id="emailHelp" className="form-text text-muted">
-                                <div  >{IsError}</div>
-
-                                    Please do not share your password with anyone else.
-                                </small>
-                            </div>
+                            
                             <button type="submit" className="btn btn-success btn-sm">
                                 Submit
                             </button>

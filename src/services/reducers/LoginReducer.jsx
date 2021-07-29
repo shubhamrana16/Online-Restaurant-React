@@ -17,7 +17,7 @@ const initialLoginState ={
 };
  
 
- const loginReducer = (state = initialLoginState, action) =>{
+ const loginReducer = (state = initialLoginState, action,history) =>{
      switch (action.type) {
          case  Type.login_Successful:
              return{
@@ -36,7 +36,7 @@ const initialLoginState ={
             return state;
      }
 
-     
+      
 
      
      }

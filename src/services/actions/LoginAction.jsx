@@ -13,8 +13,8 @@ import  Type from '../Constants';
                     type:Type.login_Successful, 
                     payload:result
                 });
-                history.push("/welcome")
-
+                
+                    history.push("/Welcome")
                 
 
           }
@@ -24,6 +24,7 @@ import  Type from '../Constants';
                 type:Type.login_Successful, 
                 payload:{}
               })
+              alert("You are not register..! Please  Sign Up")
 
           }
       }

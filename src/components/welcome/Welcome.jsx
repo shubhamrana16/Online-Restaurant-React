@@ -1,36 +1,55 @@
- import {WelcomeContainer} from './WelcomeElement';
- import WelcomeHeader from './WelcomeHeader'
-import React,{useState} from "react"
+import { WelcomeContainer } from './WelcomeElement';
+import WelcomeHeader from './WelcomeHeader'
+import React, { useState, useEffect } from "react"
 import WelcomeBody from './WelcomeBody';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router';
+import Home from '../home/Home';
+import Header from '../layout/Header';
+import { Redirect } from 'react-router-dom'
 
 
-function Welcome() {
+function Welcome(props) {
 
+    const { login } = props
+    console.log("welcome page", login);
 
-
-    
 
 
     return (
+        login ?
 
-        <React.Fragment>
+            (<div>
 
-        
-         <WelcomeContainer>
-         <WelcomeHeader />
-       
-         
-         
-         </WelcomeContainer>
 
-        
+                <React.Fragment>
+                    <WelcomeContainer>
+                        <WelcomeHeader />
+                    </WelcomeContainer>
+                </React.Fragment>
+            </div>)
 
-        
-          
-         
+            :
 
-         </React.Fragment>
+            (<div>
+                <Redirect to="/" />
+            </div>)
+
+
     )
+
+
+
+
+
 }
 
-export default Welcome
+
+
+const mapStateToProps = (state) => {
+    return {
+        login: state.login.isLogin,
+    };
+};
+
+export default connect(mapStateToProps)(Welcome)

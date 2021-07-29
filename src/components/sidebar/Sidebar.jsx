@@ -19,14 +19,14 @@ const Sidebar = ({ isOpen, toggle }) => {
         <CloseIcon />
       </Icon>
       <SidebarMenu>
-        <SidebarLink to='/'>Full Menu</SidebarLink>
-        <SidebarLink to='/'>Rolls & Egg Rolls</SidebarLink>
-        <SidebarLink to='/'> ICE-CREAM</SidebarLink>
-        <SidebarLink to='/'>Desserts</SidebarLink>
-        <SidebarLink to='/'> Pizza</SidebarLink>
+        <SidebarLink to='/login'>Full Menu</SidebarLink>
+        <SidebarLink to='/login'>Rolls & Egg Rolls</SidebarLink>
+        <SidebarLink to='/login'> ICE-CREAM</SidebarLink>
+        <SidebarLink to='/login'>Desserts</SidebarLink>
+        <SidebarLink to='/login'> Pizza</SidebarLink>
       </SidebarMenu>
       <SideBtnWrap>
-        <SidebarRoute to='/'   >Order Now</SidebarRoute>
+        <SidebarRoute to='/login'   >Order Now</SidebarRoute>
       </SideBtnWrap>
     </SidebarContainer>
     )
